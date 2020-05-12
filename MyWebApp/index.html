@@ -70,10 +70,8 @@
     </div>
 
     <div class="row" id="control-row">
-      <div class="col-xs-4 pie-chart">
-        <h4>Country Row Chart (x-axis: Counts, y-axis: Country)</h4>
-        <!-- This is where the id gets replaced to the new chart (Step 1) -->
-        <div class="dc-chart" id="chart-country-count"></div>
+      <div class="col-xs-6 col-md-3">
+        <div class="dc-chart" id="chart-macroarea-bar"></div>
       </div>
 
       <div class="pie" id="control-row">
@@ -163,9 +161,12 @@
         var ndx = crossfilter(data);
 
         // construct filtering dimensions (Step 2)
-        var countryDim = ndx.dimension(function (d) { return d["countrycodes"]; });
+        // var countryDim = ndx.dimension(function (d) { return d["countrycodes"]; });
 
         var familyDim = ndx.dimension(function (d) { return d["family"]; });
+
+        var macroareaDim = ndx.dimension(function (d) { return d["macroarea"]; });
+
 
         //*****filtering by MAP window -- part 1/2 [START HERE]
         var geomDimension = ndx.dimension(function (d) {
@@ -191,16 +192,21 @@
         var all = ndx.groupAll();
 
         // Create group for defining dim (Step 3)
-        var countryGroup = countryDim.group().reduceCount();
+        // var countryGroup = countryDim.group().reduceCount();
         // To add a new chart copy line 158, and make changes accordingly. 
 
         var familyGroup = familyDim.group().reduceCount();
 
+        var macroareaGroup = macroareaDim.group();
+
         // This is where the chart variable is defined.
         // make a copy of line 164 if new chart is made, give unique name (Step 4.)
-        var countryCountChart = dc.rowChart('#chart-country-count')
+        // var countryCountChart = dc.rowChart('#chart-country-count')
 
         var familyChart = dc.pieChart('#chart-family');
+
+        var macroareaCountBarChart = dc.barChart('#chart-macroarea-bar');
+
 
         // Not below here
 
@@ -245,14 +251,14 @@
         //   );
 
         // This is where you define the code for each chart variable. (Step 5.)
-        countryCountChart
-          .width(500)
-          .height(300)
-          .dimension(countryDim)
-          .group(countryGroup)
-          .gap(1)
-          .rowsCap(15) //only show top 20
-          .ordering(function (d) { return -d.value });
+        // countryCountChart
+        //   .width(500)
+        //   .height(300)
+        //   .dimension(countryDim)
+        //   .group(countryGroup)
+        //   .gap(1)
+        //   .rowsCap(15) //only show top 20
+        //   .ordering(function (d) { return -d.value });
 
         familyChart
           .width(250)
@@ -260,6 +266,28 @@
           .dimension(familyDim)
           .group(familyGroup)
           .ordering(function (d) { return -d.value });
+
+        macroareaCountBarChart
+          .width(300)
+          .height(500)
+          .margins({ top: 10, right: 20, bottom: 200, left: 50 }) // because of the x axix label, need to set the bootom margin a large number
+          .x(d3.scale.ordinal().domain(macroareaDim))  //d3.scale.ordinal().domain(genusDim) //d3.scaleBand() for d3 v4
+          .xUnits(dc.units.ordinal)
+          .brushOn(false)
+          // .xAxisLabel('Macroarea')
+          .yAxisLabel('Count')
+          .elasticX(true)
+          .elasticY(true)
+          .dimension(macroareaDim)
+          .barPadding(0.3)
+          .outerPadding(0.05)
+          .group(macroareaGroup)
+          .renderlet(function (chart) {
+            chart.selectAll("g.x text")
+              .attr('dx', '-30')
+              .attr('transform', "rotate(-90)");
+          });
+
 
 
         // countryCountChart
@@ -459,7 +487,7 @@
               ]
             }
           }
-          
+
           geomDimension.filter(function (d) {
             //make feature
             var point = {
