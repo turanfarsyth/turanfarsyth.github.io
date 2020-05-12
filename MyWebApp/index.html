@@ -3,22 +3,22 @@
 
 <head>
   <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-<link rel="manifest" href="favicon/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>WOL Project</title>
   <!-- Code for Modal in bootstrap -->
@@ -36,14 +36,20 @@
 
 <body>
 
+  <div class="container-fluid">
 
-  <h2>Interactive map explorer for World languages</h2>
+    <h2><b>Interactive Map Explorer for World languages</b></h2>
 
-  <!-- Loading gif Part 1/3 -->
-  <div id="loadingGIF"></div>
+    <!-- Loading gif Part 1/3 -->
+    <div id="loadingGIF"></div>
 
-  <!-- Trigger the modal with a button -->
-  <br><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">About the Project</button></br>
+    <!-- Trigger the modal with a button -->
+    <br><button type="button" class="btn btn-default pull-right  " data-toggle="modal" data-target="#myModal">About the
+      Project</button></br>
+ <!-- This is the link to page operation instructions -->
+    <p><i>(Click a chart or change map view to filter)</i></p>
+
+  </div>
 
   <div class="container-fluid">
     <div class="row">
@@ -57,7 +63,7 @@
         </h2>
       </div>
     </div>
-    
+
     <div class="row" id="control-row">
       <div class="col-xs-4 pie-chart">
         <h4>Country Row Chart (x-axis: Counts, y-axis: Country)</h4>
@@ -67,368 +73,380 @@
 
       <div class="pie" id="control-row">
         <div class="col-xs-2 pie-chart">
-        <h4>Language Family</h4>
-        <div class="dc-chart" id="chart-family"></div>
-      </div>
+          <h4>Language Family</h4>
+          <div class="dc-chart" id="chart-family"></div>
+        </div>
 
-      <!-- <div class="col-xs-2 pie-chart">
+        <!-- <div class="col-xs-2 pie-chart">
         <h4>Day <small><a id="day">reset</a></small></h4>
         <div id="chart-ring-day" class="dc-chart"></div>
       </div> -->
 
-      <div class="col-xs-6">
-        <h4>Language Regions</h4>
-        <div id="map"></div>
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="col-xs-6 col-md-3">
-        <div class="dc-chart" id="chart-rating-count"></div>
+        <div class="col-xs-6">
+          <h4>Language Regions</h4>
+          <div id="map"></div>
+        </div>
       </div>
 
-      <!-- <div class="col-xs-6 col-md-3">
+
+      <div class="row">
+        <div class="col-xs-6 col-md-3">
+          <div class="dc-chart" id="chart-rating-count"></div>
+        </div>
+
+        <!-- <div class="col-xs-6 col-md-3">
         <div class="dc-chart" id="chart-community-rating-count"></div>
       </div> -->
 
-      <!-- <div class="col-xs-6 col-md-3">
+        <!-- <div class="col-xs-6 col-md-3">
         <div class="dc-chart" id="chart-abv-count"></div>
       </div> -->
 
-      <!-- <div class="col-xs-6 col-md-3">
+        <!-- <div class="col-xs-6 col-md-3">
         <div class="dc-chart" id="chart-ibu-count"></div>
       </div> -->
-    
-      
+
+
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <table class="table table-bordered table-striped" id="data-table">
+            <thead>
+              <tr class="header">
+                <!-- These need to match the column name exactly. -->
+                <th>Language Name</th>
+                <th>Genus</th>
+                <th>Family</th>
+                <th>Macroarea</th>
+                <th>Uvular Consonants</th>
+                <th>Glottalized Consonants</th>
+                <th>Lateral Consonents</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <table class="table table-bordered table-striped" id="data-table">
-          <thead>
-            <tr class="header">
-              <!-- These need to match the column name exactly. -->
-              <th>Language Name</th>
-              <th>Genus</th>
-              <th>Family</th>
-              <th>Macroarea</th>
-              <th>Uvular Consonants</th>
-              <th>Glottalized Consonants</th>
-              <th>Lateral Consonents</th>
-            </tr>
-          </thead>
-        </table>
+    <script type="text/javascript" src="js/d3.js"></script>
+    <script type="text/javascript" src="js/crossfilter.js"></script>
+    <script type="text/javascript" src="js/dc.js"></script>
+    <script type="text/javascript" src="js/leaflet.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript">
+
+      /* instantiate and configure map */
+      var map = L.map('map');
+      var breweryMarkers = new L.FeatureGroup();
+
+      // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      //   id: '<your id here>',
+      //   accessToken: '<your token here>',
+      //   maxZoom: 16
+      // }).addTo(map);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // id: '<your id here>',
+        // accessToken: '<your token here>',
+        maxZoom: 16
+      }).addTo(map);
+
+
+      /* Parse JSON file, create charts, draw markers on map */
+      // d3.json('untappd.json', function (error, data) {
+      d3.csv('data/language.csv', function (error, data) {
+
+        var ndx = crossfilter(data);
+
+        // construct filtering dimensions (Step 2)
+        var countryDim = ndx.dimension(function (d) { return d["countrycodes"]; });
+
+        var familyDim = ndx.dimension(function (d) { return d["family"]; });
+
+        // To add new chart, add a copy of line 151, then change accordingly. 
+        var allDim = ndx.dimension(function (d) { return d; });
+
+        var all = ndx.groupAll();
+
+        // Create group for defining dim (Step 3)
+        var countryGroup = countryDim.group().reduceCount();
+        // To add a new chart copy line 158, and make changes accordingly. 
+
+        var familyGroup = familyDim.group().reduceCount();
+
+        // This is where the chart variable is defined.
+        // make a copy of line 164 if new chart is made, give unique name (Step 4.)
+        var countryCountChart = dc.rowChart('#chart-country-count')
+
+        var familyChart = dc.pieChart('#chart-family');
+
+        // Not below here
+
+        dataCount = dc.dataCount('#data-count')
+        dataTable = dc.dataTable('#data-table');
+
+        // yearChart
+        //   .width(150)
+        //   .height(150)
+        //   .dimension(yearDim)
+        //   .group(countPerYear)
+        //   .innerRadius(20);
+
+        // monthChart
+        //   .width(150)
+        //   .height(150)
+        //   .dimension(monthDim)
+        //   .group(countPerMonth)
+        //   .innerRadius(20)
+        //   .ordering(function (d) {
+        //     var order = {
+        //       'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4,
+        //       'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8,
+        //       'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+        //     };
+        //     return order[d.key];
+        //   });
+
+        // dayChart
+        //   .width(150)
+        //   .height(150)
+        //   .dimension(dayOfWeekDim)
+        //   .group(countPerDay)
+        //   .innerRadius(20)
+        //   .ordering(function (d) {
+        //     var order = {
+        //       'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3,
+        //       'Fri': 4, 'Sat': 5, 'Sun': 6
+        //     }
+        //     return order[d.key];
+        //   }
+        //   );
+
+        // This is where you define the code for each chart variable. (Step 5.)
+        countryCountChart
+          .width(500)
+          .height(300)
+          .dimension(countryDim)
+          .group(countryGroup)
+          .gap(1)
+          .rowsCap(15) //only show top 20
+          .ordering(function (d) { return -d.value });
+
+        familyChart
+          .width(250)
+          .height(300)
+          .dimension(familyDim)
+          .group(familyGroup)
+          .ordering(function (d) { return -d.value });
+
+
+        // countryCountChart
+        //         .width(1200)
+        //         .height(300)
+        //         .x(d3.scale.ordinal().domain(countryDim))  //d3.scale.ordinal().domain(genusDim) //d3.scaleBand() for d3 v4
+        //         .xUnits(dc.units.ordinal)
+        //         .brushOn(false)
+        //         .xAxisLabel('Country')
+        //         .yAxisLabel('Count')
+        //         .dimension(countryDim)
+        //         .barPadding(0.1)
+        //         .outerPadding(0.05)
+        //         .group(countryGroup)
+        //         .ordering(function(d){ return -d.value });
+
+
+        // commRatingCountChart
+        //   .width(300)
+        //   .height(180)
+        //   .dimension(commRatingDim)
+        //   .group(countPerCommRating)
+        //   .x(d3.scale.linear().domain([0, 5.2]))
+        //   .elasticY(true)
+        //   .centerBar(true)
+        //   .barPadding(5)
+        //   .xAxisLabel('Community rating')
+        //   .yAxisLabel('Count')
+        //   .margins({ top: 10, right: 20, bottom: 50, left: 50 });
+        // commRatingCountChart.xAxis().tickValues([0, 1, 2, 3, 4, 5]);
+
+        // abvCountChart
+        //   .width(300)
+        //   .height(180)
+        //   .dimension(abvDim)
+        //   .group(countPerABV)
+        //   .x(d3.scale.linear().domain([-0.2, d3.max(beerData, function (d) { return d.beer.beer_abv; }) + 0.2]))
+        //   .elasticY(true)
+        //   .centerBar(true)
+        //   .barPadding(2)
+        //   .xAxisLabel('Alcohol By Volume (%)')
+        //   .yAxisLabel('Count')
+        //   .margins({ top: 10, right: 20, bottom: 50, left: 50 });
+
+        // ibuCountChart
+        //   .width(300)
+        //   .height(180)
+        //   .dimension(ibuDim)
+        //   .group(countPerIBU)
+        //   .x(d3.scale.linear().domain([-2, d3.max(beerData, function (d) { return d.beer.beer_ibu; }) + 2]))
+        //   .elasticY(true)
+        //   .centerBar(true)
+        //   .barPadding(5)
+        //   .xAxisLabel('International Bitterness Units')
+        //   .yAxisLabel('Count')
+        //   .xUnits(function (d) { return 5; })
+        //   .margins({ top: 10, right: 20, bottom: 50, left: 50 });
+
+        dataCount
+          .dimension(ndx)
+          .group(all);
+
+        dataTable
+          // This is where I will adjust the columns of the fields in the index file.
+          .dimension(allDim)
+          .group(function (d) { return 'dc.js insists on putting a row here so I remove it using JS'; })
+          .size(100)
+          .columns([
+            // function (d) { return d.brewery.brewery_name; },
+            // function (d) { return d.beer.beer_name; },
+            // function (d) { return d.beer.beer_style; },
+            // function (d) { return d.rating_score; },
+            // function (d) { return d.beer.rating_score; },
+            // function (d) { return d.beer.beer_abv; },
+            // function (d) { return d.beer.beer_ibu; }
+            // <th>Language Name</th>
+            //     <th>Genus</th>
+            //     <th>Family</th>
+            //     <th>Macroarea</th>
+            //     <th>Uvular Consonants</th>
+            //     <th>Glottalized Consonants</th>
+            //     <th>Lateral Consonents</th>
+            function (d) { return d["Name"]; },
+            function (d) { return d["genus"]; },
+            function (d) { return d["family"]; },
+            function (d) { return d["macroarea"]; },
+            function (d) { return d["6A Uvular Consonants"]; },
+            function (d) { return d["7A Glottalized Consonants"]; },
+            function (d) { return d["8A Lateral Consonants"]; },
+
+          ])
+          // This is the place to sort the data table, choose one of the table columns.
+          .sortBy(dc.pluck('Name'))
+          .order(d3.descending)
+          .on('renderlet', function (table) {
+            // each time table is rendered remove nasty extra row dc.js insists on adding
+            table.select('tr.dc-table-group').remove();
+
+            // update map with breweries to match filtered data
+            breweryMarkers.clearLayers();
+            _.each(allDim.top(Infinity), function (d) {
+              // this is the code for the geospatial Long/Lat
+              var longitude = d["longitude"];
+              var latitude = d["latitude"];
+              var name = d["Name"];
+              var countrycodes = d["countrycodes"];
+              var genus = d["genus"];
+              var family = d["family"];
+              var macroarea = d["macroarea"];
+              // this is where more to define the variables
+
+              // var marker = L.marker([loc.lat, loc.lng]);
+              var marker = L.marker([latitude, longitude]);
+              // marker.bindPopup("<p>" + name + " " + loc.brewery_city + " " + loc.brewery_state + "</p>");
+              marker.bindPopup("Name: " + name + "<br>" +
+                "Genus: " + genus + "<br>" +
+                "Family: " + family + "<br>" +
+                "Macroarea: " + macroarea + "<br>" +
+                "Country: " + countrycodes + "<br>");;
+              breweryMarkers.addLayer(marker);
+            });
+            map.addLayer(breweryMarkers);
+            map.fitBounds(breweryMarkers.getBounds());
+          });
+
+        // register handlers
+        d3.selectAll('a#all').on('click', function () {
+          dc.filterAll();
+          dc.renderAll();
+        });
+
+        // d3.selectAll('a#year').on('click', function () {
+        //   yearChart.filterAll();
+        //   dc.redrawAll();
+        // });
+
+        // d3.selectAll('a#month').on('click', function () {
+        //   monthChart.filterAll();
+        //   dc.redrawAll();
+        // });
+
+        // d3.selectAll('a#day').on('click', function () {
+        //   dayChart.filterAll();
+        //   dc.redrawAll();
+        // });
+
+        // showtime!
+        dc.renderAll();
+
+      });
+
+    </script>
+
+    <!-- Modal part begins here -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">World Languages Interactive Map Project</h4>
+          </div>
+          <div class="modal-body">
+            <p><b>
+                <li>About the Project:
+              </b></li>
+              <br>
+            <p>This project is an interactive map that represents world languages across geospatial regions.
+              Phonological, grammatical, lexical data from those languages will be represented in charts, graphs and
+              fields. The data source is WALS Online. Currently the project can only be accessed by UNM Students and
+              faculty.</p></br>
+            <li><b>About the Team:</b></li><br><b>Project Advisor:</b><a href="http://www.lipingyang.org/"> Dr. Liping
+              Yang</a> (Course instructor of GEOG 485L/585L <i>Internet Mapping)</i>
+            </br>
+            <br><b>Team Member:</b><a href="http://turanfarsyth.github.io"> Tura Williams</a>:<a
+              href="mailto:turanfarsyth@unm.edu"> turanfarsyth@unm.edu</a>
+            </br>
+            <br>
+            <li><b>Acknowledgements:</b></li></br><a
+              href="https://www.kaggle.com/rtatman/world-atlas-of-language-structures"> World Language Project Kaggle
+              Page</a>
+            <br><a href="https://wals.info/"> World Language Project Home Page</a></br>
+            <a href="https://github.com/austinlyons/dcjs-leaflet-untappd"> Austin Lyon's Leaflet Tutorial Page</a>
+            <p><a href="https://github.com/"> GitHub</a></p>
+
+
+            </p>
+
+            <h3<>
+              </h3>
+
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="js/d3.js"></script>
-  <script type="text/javascript" src="js/crossfilter.js"></script>
-  <script type="text/javascript" src="js/dc.js"></script>
-  <script type="text/javascript" src="js/leaflet.js"></script>
-  <script type="text/javascript" src="js/underscore-min.js"></script>
-  <script type="text/javascript">
+  <!-- Modal part ends here -->
 
-    /* instantiate and configure map */
-    var map = L.map('map');
-    var breweryMarkers = new L.FeatureGroup();
-
-    // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    //   id: '<your id here>',
-    //   accessToken: '<your token here>',
-    //   maxZoom: 16
-    // }).addTo(map);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      // id: '<your id here>',
-      // accessToken: '<your token here>',
-      maxZoom: 16
-    }).addTo(map);
-
-
-    /* Parse JSON file, create charts, draw markers on map */
-    // d3.json('untappd.json', function (error, data) {
-      d3.csv('data/language.csv', function (error, data) {
-
-      var ndx = crossfilter(data);
-
-      // construct filtering dimensions (Step 2)
-      var countryDim = ndx.dimension(function (d) { return d["countrycodes"]; });
-
-      var familyDim = ndx.dimension(function (d) { return d["family"]; });
-
-// To add new chart, add a copy of line 151, then change accordingly. 
-      var allDim = ndx.dimension(function (d) { return d; });
-
-      var all = ndx.groupAll();
-
-      // Create group for defining dim (Step 3)
-      var countryGroup = countryDim.group().reduceCount();
-      // To add a new chart copy line 158, and make changes accordingly. 
-
-      var familyGroup = familyDim.group().reduceCount();
-
-     // This is where the chart variable is defined.
-// make a copy of line 164 if new chart is made, give unique name (Step 4.)
-     var countryCountChart  = dc.rowChart('#chart-country-count')
-
-     var familyChart   = dc.pieChart('#chart-family');
- 
-// Not below here
-
-        dataCount = dc.dataCount('#data-count')
-      dataTable = dc.dataTable('#data-table');
-
-      // yearChart
-      //   .width(150)
-      //   .height(150)
-      //   .dimension(yearDim)
-      //   .group(countPerYear)
-      //   .innerRadius(20);
-
-      // monthChart
-      //   .width(150)
-      //   .height(150)
-      //   .dimension(monthDim)
-      //   .group(countPerMonth)
-      //   .innerRadius(20)
-      //   .ordering(function (d) {
-      //     var order = {
-      //       'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4,
-      //       'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8,
-      //       'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
-      //     };
-      //     return order[d.key];
-      //   });
-
-      // dayChart
-      //   .width(150)
-      //   .height(150)
-      //   .dimension(dayOfWeekDim)
-      //   .group(countPerDay)
-      //   .innerRadius(20)
-      //   .ordering(function (d) {
-      //     var order = {
-      //       'Mon': 0, 'Tue': 1, 'Wed': 2, 'Thu': 3,
-      //       'Fri': 4, 'Sat': 5, 'Sun': 6
-      //     }
-      //     return order[d.key];
-      //   }
-      //   );
-
-      // This is where you define the code for each chart variable. (Step 5.)
-      countryCountChart
-        .width(500)
-        .height(300)
-        .dimension(countryDim) 
-        .group(countryGroup)  
-        .gap(1) 
-        .rowsCap(15) //only show top 20
-        .ordering(function(d){ return -d.value });
-
-      familyChart
-        .width(250)
-        .height(300)
-        .dimension(familyDim) 
-        .group(familyGroup) 
-        .ordering(function(d){ return -d.value });
-
-
-// countryCountChart
-//         .width(1200)
-//         .height(300)
-//         .x(d3.scale.ordinal().domain(countryDim))  //d3.scale.ordinal().domain(genusDim) //d3.scaleBand() for d3 v4
-//         .xUnits(dc.units.ordinal)
-//         .brushOn(false)
-//         .xAxisLabel('Country')
-//         .yAxisLabel('Count')
-//         .dimension(countryDim)
-//         .barPadding(0.1)
-//         .outerPadding(0.05)
-//         .group(countryGroup)
-//         .ordering(function(d){ return -d.value });
-
-
-      // commRatingCountChart
-      //   .width(300)
-      //   .height(180)
-      //   .dimension(commRatingDim)
-      //   .group(countPerCommRating)
-      //   .x(d3.scale.linear().domain([0, 5.2]))
-      //   .elasticY(true)
-      //   .centerBar(true)
-      //   .barPadding(5)
-      //   .xAxisLabel('Community rating')
-      //   .yAxisLabel('Count')
-      //   .margins({ top: 10, right: 20, bottom: 50, left: 50 });
-      // commRatingCountChart.xAxis().tickValues([0, 1, 2, 3, 4, 5]);
-
-      // abvCountChart
-      //   .width(300)
-      //   .height(180)
-      //   .dimension(abvDim)
-      //   .group(countPerABV)
-      //   .x(d3.scale.linear().domain([-0.2, d3.max(beerData, function (d) { return d.beer.beer_abv; }) + 0.2]))
-      //   .elasticY(true)
-      //   .centerBar(true)
-      //   .barPadding(2)
-      //   .xAxisLabel('Alcohol By Volume (%)')
-      //   .yAxisLabel('Count')
-      //   .margins({ top: 10, right: 20, bottom: 50, left: 50 });
-
-      // ibuCountChart
-      //   .width(300)
-      //   .height(180)
-      //   .dimension(ibuDim)
-      //   .group(countPerIBU)
-      //   .x(d3.scale.linear().domain([-2, d3.max(beerData, function (d) { return d.beer.beer_ibu; }) + 2]))
-      //   .elasticY(true)
-      //   .centerBar(true)
-      //   .barPadding(5)
-      //   .xAxisLabel('International Bitterness Units')
-      //   .yAxisLabel('Count')
-      //   .xUnits(function (d) { return 5; })
-      //   .margins({ top: 10, right: 20, bottom: 50, left: 50 });
-
-      dataCount
-        .dimension(ndx)
-        .group(all);
-
-      dataTable
-      // This is where I will adjust the columns of the fields in the index file.
-        .dimension(allDim)
-        .group(function (d) { return 'dc.js insists on putting a row here so I remove it using JS'; })
-        .size(100)
-        .columns([
-          // function (d) { return d.brewery.brewery_name; },
-          // function (d) { return d.beer.beer_name; },
-          // function (d) { return d.beer.beer_style; },
-          // function (d) { return d.rating_score; },
-          // function (d) { return d.beer.rating_score; },
-          // function (d) { return d.beer.beer_abv; },
-          // function (d) { return d.beer.beer_ibu; }
-          // <th>Language Name</th>
-          //     <th>Genus</th>
-          //     <th>Family</th>
-          //     <th>Macroarea</th>
-          //     <th>Uvular Consonants</th>
-          //     <th>Glottalized Consonants</th>
-          //     <th>Lateral Consonents</th>
-          function (d) { return d["Name"]; },
-          function (d) { return d["genus"]; },
-          function (d) { return d["family"]; },
-          function (d) { return d["macroarea"]; },
-          function (d) { return d["6A Uvular Consonants"]; },
-          function (d) { return d["7A Glottalized Consonants"]; },
-          function (d) { return d["8A Lateral Consonants"]; },
-
-        ])
-        // This is the place to sort the data table, choose one of the table columns.
-        .sortBy(dc.pluck('Name'))
-        .order(d3.descending)
-        .on('renderlet', function (table) {
-          // each time table is rendered remove nasty extra row dc.js insists on adding
-          table.select('tr.dc-table-group').remove();
-
-          // update map with breweries to match filtered data
-          breweryMarkers.clearLayers();
-          _.each(allDim.top(Infinity), function (d) {
-            // this is the code for the geospatial Long/Lat
-            var longitude = d["longitude"];
-            var latitude = d["latitude"];
-            var name = d["Name"];
-            var countrycodes = d["countrycodes"];
-            var genus = d["genus"];
-            var family = d["family"];
-            var macroarea = d["macroarea"];
-            // this is where more to define the variables
-            
-            // var marker = L.marker([loc.lat, loc.lng]);
-            var marker = L.marker([latitude, longitude]);
-            // marker.bindPopup("<p>" + name + " " + loc.brewery_city + " " + loc.brewery_state + "</p>");
-            marker.bindPopup("Name: " + name + "<br>" + 
-                             "Genus: " + genus + "<br>" +
-                             "Family: " + family + "<br>" +
-                             "Macroarea: " + macroarea + "<br>" +
-                             "Country: " + countrycodes + "<br>");                           ;
-            breweryMarkers.addLayer(marker);
-          });
-          map.addLayer(breweryMarkers);
-          map.fitBounds(breweryMarkers.getBounds());
-        });
-
-      // register handlers
-      d3.selectAll('a#all').on('click', function () {
-        dc.filterAll();
-        dc.renderAll();
-      });
-
-      // d3.selectAll('a#year').on('click', function () {
-      //   yearChart.filterAll();
-      //   dc.redrawAll();
-      // });
-
-      // d3.selectAll('a#month').on('click', function () {
-      //   monthChart.filterAll();
-      //   dc.redrawAll();
-      // });
-
-      // d3.selectAll('a#day').on('click', function () {
-      //   dayChart.filterAll();
-      //   dc.redrawAll();
-      // });
-
-      // showtime!
-      dc.renderAll();
-
-    });
+  <!-- for loading GIF part begin, Part 3/3 -->
+  <script>
+    // Hide loader after 15 seconds, even if the page hasn't finished loading
+    jQuery('#loadingGIF').fadeOut(15 * 1000);
 
   </script>
 
- <!-- Modal part begins here -->
- <div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">World Languages Interactive Map Project</h4>
-      </div>
-      <div class="modal-body">
-        <p><b><li>About the Project:</b></li>
-          <br><p>This project is an interactive map that represents world languages across geospatial regions. Phonological, grammatical, lexical data from those languages will be represented in charts, graphs and fields. The data source is WALS Online. Currently the project can only be accessed by UNM Students and faculty.</p></br> 
-          <li><b>About the Team:</b></li><br><b>Project Advisor:</b><a href="http://www.lipingyang.org/"> Dr. Liping Yang</a> (Course instructor of GEOG 485L/585L <i>Internet Mapping)</i>
-        </br>
-        <br><b>Team Member:</b><a href="http://turanfarsyth.github.io"> Tura Williams</a>:<a href="mailto:turanfarsyth@unm.edu"> turanfarsyth@unm.edu</a>
-        </br>
-        <br><li><b>Acknowledgements:</b></li></br><a href="https://www.kaggle.com/rtatman/world-atlas-of-language-structures"> World Language Project Kaggle Page</a>
-        <br><a href="https://wals.info/"> World Language Project Home Page</a></br>
-        <a href="https://github.com/austinlyons/dcjs-leaflet-untappd"> Austin Lyon's Leaflet Tutorial Page</a>
-        <p><a href="https://github.com/"> GitHub</a></p>
-
-
-        </p>
-
-        <h3<></h3>
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<!-- Modal part ends here -->
-
-<!-- for loading GIF part begin, Part 3/3 -->
-<script>
-  // Hide loader after 15 seconds, even if the page hasn't finished loading
-  jQuery('#loadingGIF').fadeOut(15 * 1000);
-
-</script>
-
- <!-- for loading GIF part end -->
+  <!-- for loading GIF part end -->
 
 
 
