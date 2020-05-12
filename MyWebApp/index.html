@@ -32,6 +32,11 @@
   <link rel="stylesheet" type="text/css" href="css/leaflet.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <!-- for filtering using map view -->
+  <!-- turf is a GIS library used here only for point-in-polygon function to subset data by map window -->
+  <script type="text/javascript" src='https://unpkg.com/@turf/turf/turf.min.js'></script>
+
 </head>
 
 <body>
@@ -44,9 +49,9 @@
     <div id="loadingGIF"></div>
 
     <!-- Trigger the modal with a button -->
-    <br><button type="button" class="btn btn-default pull-right  " data-toggle="modal" data-target="#myModal">About the
-      Project</button></br>
- <!-- This is the link to page operation instructions -->
+    <button type="button" class="btn btn-default pull-right  " data-toggle="modal" data-target="#myModal">About the
+      Project</button>
+    <!-- This is the link to page operation instructions -->
     <p><i>(Click a chart or change map view to filter)</i></p>
 
   </div>
@@ -161,6 +166,24 @@
         var countryDim = ndx.dimension(function (d) { return d["countrycodes"]; });
 
         var familyDim = ndx.dimension(function (d) { return d["family"]; });
+
+        //*****filtering by MAP window -- part 1/2 [START HERE]
+        var geomDimension = ndx.dimension(function (d) {
+          lat_geojson = d["latitude"]
+          long_geojsion = d["longitude"]
+
+          geometry = {
+            "type": "Point",
+            "coordinates": [long_geojsion, lat_geojson]  //it is geojson, so the lat and long location are swithced.
+          }
+          return geometry;
+        })
+
+        //*****filtering by MAP window -- part 1/2 [END HERE]
+
+
+
+
 
         // To add new chart, add a copy of line 151, then change accordingly. 
         var allDim = ndx.dimension(function (d) { return d; });
@@ -385,6 +408,78 @@
 
         // showtime!
         dc.renderAll();
+
+        //*****filtering by MAP window -- part 2/2 [START HERE]
+
+
+        //map listeners
+        map.on('moveend', function () {
+          updateMapFilter()
+        })
+
+        map.on('zoomend', function () {
+          updateMapFilter()
+        })
+        // this function constrains the data to points visible within the map window
+        function updateMapFilter() {
+
+          var bounds = map.getBounds(),
+            n = bounds._northEast.lat,
+            e = bounds._northEast.lng,
+            s = bounds._southWest.lat,
+            w = bounds._southWest.lng;
+
+          var boundsFeature = {
+            type: 'Feature',
+            geometry: {
+              type: 'Polygon',
+              coordinates: [
+                [
+                  [
+                    w,
+                    s
+                  ],
+                  [
+                    w,
+                    n
+                  ],
+                  [
+                    e,
+                    n
+                  ],
+                  [
+                    e,
+                    s
+                  ],
+                  [
+                    w,
+                    s
+                  ]
+                ]
+              ]
+            }
+          }
+          
+          geomDimension.filter(function (d) {
+            //make feature
+            var point = {
+              type: 'Feature',
+              geometry: d
+            }
+
+            return turf.inside(point, boundsFeature)
+          })
+
+          dc.redrawAll();
+        }
+
+
+
+        //*****filtering by MAP window -- part 2/2 [END HERE]
+
+
+
+
 
       });
 
